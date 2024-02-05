@@ -1,25 +1,48 @@
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  padding: 24px 156px;
-  max-width: 1440px;
+.timer-wrapper {
+    padding: 36px 156px;
 }
 
-.gallery-item {
-  flex-basis: calc((100% - 48px) / 3);
+.timer-wrapper input {
+    width: 272px;
+        height: 40px;
+        border-radius: 4px;
+        margin-right: 8px;
+        padding: 8px 16px;
+font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
 }
 
-.gallery-image {
-  width: 360px;
-  height: 200px;
-  object-fit: cover;
+.timer-wrapper button {
+    border-radius: 8px;
+        padding: 8px 16px;
+        width: 75px;
+        height: 40px;
+        background-color: #cfcfcf;
 }
 
-.gallery-image:hover {
-  transform: scale(1.04);
+.timer {
+    margin-top: 32px;
+    display: flex;
 }
 
-.simple-lightbox {
-  background-color: rgba(46, 47, 66, 0.8);
+.value {
+font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+}
+
+.label {
+    font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #2e2f42;
+        text-transform: uppercase;
 }
