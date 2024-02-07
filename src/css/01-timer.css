@@ -22,6 +22,7 @@ font-family: "Montserrat", sans-serif;
         width: 75px;
         height: 40px;
         background-color: #cfcfcf;
+        cursor: pointer;
 }
 
 .timer {

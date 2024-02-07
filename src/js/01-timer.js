@@ -3,6 +3,7 @@ import "flatpickr/dist/flatpickr.min.css";
 
 let userSelectedDate;
 const buttonStart = document.querySelector('button[data-start]');
+buttonStart.disabled = true;
 
 const options = {
   enableTime: true,
@@ -11,12 +12,12 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     console.log(selectedDates[0]);
-    userSelectedDate = selectedDates[0];
-    if (userSelectedDate < new Date()) {
+    if (selectedDates[0] < new Date()) {
       window.alert("Please choose a date in the future");
       buttonStart.disabled = true;
     } else { 
-buttonStart.disabled = false;
+      buttonStart.disabled = false;
+      userSelectedDate = selectedDates[0];
     }
         console.log(userSelectedDate);
   },
