@@ -3,9 +3,12 @@ import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-
-let userSelectedDate;
+const spanDays = document.querySelector(".value[data-days]");
+const spanHours = document.querySelector(".value[data-hours]");
+const spanMinutes = document.querySelector(".value[data-minutes]");
+const spanSeconds = document.querySelector(".value[data-seconds]");
 const buttonStart = document.querySelector('button[data-start]');
+let userSelectedDate;
 buttonStart.disabled = true;
 
 const options = {
@@ -22,11 +25,20 @@ const options = {
       buttonStart.disabled = false;
       userSelectedDate = selectedDates[0];
     }
-        console.log(userSelectedDate);
+    console.log(userSelectedDate);
+
+    const currentDate = new Date();
+    let ms = userSelectedDate - currentDate;
+
+    console.log(ms);
+    console.log(convertMs(ms)); 
+    setInterval(() => { ms = ms - 1000;  console.log(convertMs(ms));}, 1000)
   },
 };
 
 flatpickr("input#datetime-picker", options);
+
+
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
