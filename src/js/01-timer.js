@@ -23,12 +23,12 @@ const options = {
     console.log(selectedDates[0]);
     if (selectedDates[0] < new Date()) {
       iziToast.show({
-        color: 'red', // blue, red,
-     displayMode: 'once', // once, replace       
-        position: 'topRight', // bottomRight, bottomLeft, topRight,  
-        progressBar: false,
-    message: 'Please choose a date in the future'
-});
+        messageColor: 'white',
+        color: '#EF4040', // blue, red,
+        displayMode: 'once', // once, replace
+        position: 'topRight', // bottomRight, bottomLeft, topRight,
+        message: 'Please choose a date in the future',
+      });
       // window.alert('Please choose a date in the future');
       buttonStart.disabled = true;
     } else {
@@ -90,19 +90,3 @@ function addLeadingZero() {
   const seconds = formatTime.seconds.toString().padStart(2, '0');
   return { days, hours, minutes, seconds };
 }
-
-// const markup = images
-//   .map(
-//     image => `<li class='gallery-item'>
-//   <a class='gallery-link' href='${image.original}'>
-//     <img
-//       class='gallery-image'
-//       src='${image.preview}'
-//       alt='${image.description}'
-//     />
-//   </a>
-// </li>`
-//   )
-//   .join('');
-
-// listImages.insertAdjacentHTML('afterbegin', markup);
