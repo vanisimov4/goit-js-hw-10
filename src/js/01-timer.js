@@ -3,6 +3,8 @@ import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+// const timerForm { }
+
 const spanDays = document.querySelector('.value[data-days]');
 const spanHours = document.querySelector('.value[data-hours]');
 const spanMinutes = document.querySelector('.value[data-minutes]');
@@ -22,14 +24,13 @@ const options = {
   onClose(selectedDates) {
     console.log(selectedDates[0]);
     if (selectedDates[0] < new Date()) {
-      iziToast.show({
+      iziToast.error({
         messageColor: 'white',
         color: '#EF4040', // blue, red,
         displayMode: 'once', // once, replace
         position: 'topRight', // bottomRight, bottomLeft, topRight,
         message: 'Please choose a date in the future',
       });
-      // window.alert('Please choose a date in the future');
       buttonStart.disabled = true;
     } else {
       buttonStart.disabled = false;
