@@ -2,28 +2,49 @@
 padding: 36px 156px;
 }
 
-/* .form label {
+.form label:first-child {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
 
-  color: #2e2f42;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
   letter-spacing: 0.04em;
 }
 
+legend {
+  font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+}
+
+label {
+font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+    font-size: 16px;
+  line-height: 1.5;
+  color: #2e2f42;
+}
+
+.form input:first-of-type {
+
+}
+
+.form input:not(:first-of-type) {
+  
+}
+
 fieldset {
-  display: flex;
-  flex-direction: row;
+
+
 }
 
 fieldset label {
-  display: block;
-} */
+
+
+}
 
 
 
