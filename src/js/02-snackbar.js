@@ -1,4 +1,6 @@
+const inputDelay = document.querySelector('input[name="delay"]');
 
+console.log(inputDelay);
 
 
 // const STORAGE_KEY = 'feedback-form-state';
