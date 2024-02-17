@@ -46,17 +46,17 @@ function hundleBtnClick() {
   diff = userSelectedDate - Date.now();
   timerForm.buttonStart.disabled = true;
   timerForm.inputTimer.disabled = true;
-  console.log(convertMs(Date.now()));
+  
   const intervalId = setInterval(() => {
-    diff = diff - 1000;
+    diff -= 1000;
     if (diff <= 0) {
       clearInterval(intervalId);
     } else {
-      const objTime = addLeadingZero(diff);
-      timerForm.spanDays.innerHTML = objTime.days;
-      timerForm.spanHours.innerHTML = objTime.hours;
-      timerForm.spanMinutes.innerHTML = objTime.minutes;
-      timerForm.spanSeconds.innerHTML = objTime.seconds;
+      const { days, hours, minutes, seconds } = convertMs(diff);
+      timerForm.spanDays.innerHTML = addLeadingZero(days);
+      timerForm.spanHours.innerHTML = addLeadingZero(hours);
+      timerForm.spanMinutes.innerHTML = addLeadingZero(minutes);
+      timerForm.spanSeconds.innerHTML = addLeadingZero(seconds);
     }
   }, 1000);
 }
@@ -84,11 +84,6 @@ console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
 console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
 console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
 
-function addLeadingZero() {
-  const formatTime = convertMs(diff);
-  const days = formatTime.days.toString().padStart(2, '0');
-  const hours = formatTime.hours.toString().padStart(2, '0');
-  const minutes = formatTime.minutes.toString().padStart(2, '0');
-  const seconds = formatTime.seconds.toString().padStart(2, '0');
-  return { days, hours, minutes, seconds };
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
 }

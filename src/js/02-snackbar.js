@@ -24,7 +24,6 @@ function handleFormSubmit(event) {
       iziToast.show({
         messageColor: 'white',
         color: '#59a10d', // blue, red,
-        displayMode: 0, // once, replace
         position: 'topRight', // bottomRight, bottomLeft, topRight,
         message: `✅ Fulfilled promise in ${delay}ms`,
       });
@@ -33,7 +32,6 @@ function handleFormSubmit(event) {
       iziToast.show({
         messageColor: 'white',
         color: '#ef4040', // blue, red,
-        displayMode: 0, // once, replace
         position: 'topRight', // bottomRight, bottomLeft, topRight,
         message: `❌ Rejected promise in ${delay}ms`,
       });
