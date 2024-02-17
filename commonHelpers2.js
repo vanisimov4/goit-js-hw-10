@@ -1,2 +1,2 @@
-import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */const e=document.querySelector('input[name="delay"]');console.log(e);
+import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */const e={inputDelay:document.querySelector('input[name="delay"]'),inputFulfilled:document.querySelector('input[value="fulfilled"]'),inputRejected:document.querySelector('input[value="rejected"]'),btn:document.querySelector("button")};e.btn.addEventListener("submit",o);console.log(e.inputFulfilled);console.log(e.inputRejected);function o(t){t.preventDefault();const n=new Promise(()=>{});console.log(n)}
 //# sourceMappingURL=commonHelpers2.js.map
