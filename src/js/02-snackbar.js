@@ -1,69 +1,42 @@
-const timerForm = {
-    inputDelay: document.querySelector('input[name="delay"]'),
-    inputFulfilled: document.querySelector('input[value="fulfilled"]'),
-    inputRejected: document.querySelector('input[value="rejected"]'),
-    btn: document.querySelector('button'),
-}
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
-timerForm.btn.addEventListener('submit', handleFormSubmit);
+const form = document.querySelector('form.form');
 
-console.log(timerForm.inputFulfilled);
-console.log(timerForm.inputRejected);
-
+form.addEventListener('submit', handleFormSubmit);
 
 function handleFormSubmit(event) {
-    event.preventDefault();
-    const promise = new Promise(() => { });
-console.log(promise);
+  event.preventDefault();
+  const delay = form.elements.delay.value;
+  const state = form.elements.state.value;
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (state == 'fulfilled') {
+        resolve(delay);
+      } else {
+        reject(delay);
+      }
+    }, delay);
+  });
+
+  promise
+    .then(value => {
+      iziToast.show({
+        messageColor: 'white',
+        color: '#59a10d', // blue, red,
+        displayMode: 0, // once, replace
+        position: 'topRight', // bottomRight, bottomLeft, topRight,
+        message: `✅ Fulfilled promise in ${delay}ms`,
+      });
+    })
+    .catch(error => {
+      iziToast.show({
+        messageColor: 'white',
+        color: '#ef4040', // blue, red,
+        displayMode: 0, // once, replace
+        position: 'topRight', // bottomRight, bottomLeft, topRight,
+        message: `❌ Rejected promise in ${delay}ms`,
+      });
+    });
+  form.reset();
 }
-
-// const STORAGE_KEY = 'feedback-form-state';
-
-// const form = document.querySelector('form.feedback-form');
-
-// form.addEventListener('input', handleFormInput);
-// form.addEventListener('submit', handleFormSubmit);
-
-// function handleFormInput() {
-//   const email = form.elements.email.value.trim();
-//   const message = form.elements.message.value.trim();
-//   const objForm = {
-//     email,
-//     message,
-//   };
-//   saveToLS(STORAGE_KEY, objForm);
-// }
-
-// function handleFormSubmit(event) {
-//   event.preventDefault();
-
-//   if (form.elements.email.value === '' || form.elements.message.value === '') {
-//     return alert('All form fields must be filled in');
-//   }
-//   const data = loadFromLS(STORAGE_KEY);
-//   console.log(data);
-//   localStorage.removeItem(STORAGE_KEY);
-//   form.reset();
-// }
-
-// function saveToLS(key, value) {
-//   const zip = JSON.stringify(value);
-//   localStorage.setItem(key, zip);
-// }
-
-// function loadFromLS(key) {
-//   const zip = localStorage.getItem(key);
-//   try {
-//     return JSON.parse(zip);
-//   } catch {
-//     return zip;
-//   }
-// }
-
-// function init() {
-//   const data = loadFromLS(STORAGE_KEY) || {};
-//   form.elements.email.value = data.email || '';
-//   form.elements.message.value = data.message || '';
-// }
-
-// init();
