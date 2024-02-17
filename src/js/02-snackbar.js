@@ -1,7 +1,21 @@
-const inputDelay = document.querySelector('input[name="delay"]');
+const timerForm = {
+    inputDelay: document.querySelector('input[name="delay"]'),
+    inputFulfilled: document.querySelector('input[value="fulfilled"]'),
+    inputRejected: document.querySelector('input[value="rejected"]'),
+    btn: document.querySelector('button'),
+}
 
-console.log(inputDelay);
+timerForm.btn.addEventListener('submit', handleFormSubmit);
 
+console.log(timerForm.inputFulfilled);
+console.log(timerForm.inputRejected);
+
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const promise = new Promise(() => { });
+console.log(promise);
+}
 
 // const STORAGE_KEY = 'feedback-form-state';
 

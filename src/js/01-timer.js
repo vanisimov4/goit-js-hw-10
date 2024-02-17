@@ -3,17 +3,18 @@ import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-// const timerForm { }
+const timerForm = {
+  spanDays: document.querySelector('.value[data-days]'),
+  spanHours: document.querySelector('.value[data-hours]'),
+  spanMinutes: document.querySelector('.value[data-minutes]'),
+  spanSeconds: document.querySelector('.value[data-seconds]'),
+  buttonStart: document.querySelector('button[data-start]'),
+  inputTimer: document.querySelector('input#datetime-picker'),
+};
 
-const spanDays = document.querySelector('.value[data-days]');
-const spanHours = document.querySelector('.value[data-hours]');
-const spanMinutes = document.querySelector('.value[data-minutes]');
-const spanSeconds = document.querySelector('.value[data-seconds]');
-const buttonStart = document.querySelector('button[data-start]');
-const inputTimer = document.querySelector('input#datetime-picker');
 let userSelectedDate;
-buttonStart.disabled = true;
-buttonStart.addEventListener('click', hundleBtnClick);
+timerForm.buttonStart.disabled = true;
+timerForm.buttonStart.addEventListener('click', hundleBtnClick);
 let diff;
 
 const options = {
@@ -31,20 +32,20 @@ const options = {
         position: 'topRight', // bottomRight, bottomLeft, topRight,
         message: 'Please choose a date in the future',
       });
-      buttonStart.disabled = true;
+      timerForm.buttonStart.disabled = true;
     } else {
-      buttonStart.disabled = false;
+      timerForm.buttonStart.disabled = false;
       userSelectedDate = selectedDates[0];
     }
   },
 };
 
-flatpickr(inputTimer, options);
+flatpickr(timerForm.inputTimer, options);
 
 function hundleBtnClick() {
   diff = userSelectedDate - Date.now();
-  buttonStart.disabled = true;
-  inputTimer.disabled = true;
+  timerForm.buttonStart.disabled = true;
+  timerForm.inputTimer.disabled = true;
   console.log(convertMs(Date.now()));
   const intervalId = setInterval(() => {
     diff = diff - 1000;
@@ -52,10 +53,10 @@ function hundleBtnClick() {
       clearInterval(intervalId);
     } else {
       const objTime = addLeadingZero(diff);
-      spanDays.innerHTML = objTime.days;
-      spanHours.innerHTML = objTime.hours;
-      spanMinutes.innerHTML = objTime.minutes;
-      spanSeconds.innerHTML = objTime.seconds;
+      timerForm.spanDays.innerHTML = objTime.days;
+      timerForm.spanHours.innerHTML = objTime.hours;
+      timerForm.spanMinutes.innerHTML = objTime.minutes;
+      timerForm.spanSeconds.innerHTML = objTime.seconds;
     }
   }, 1000);
 }
