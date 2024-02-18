@@ -14,7 +14,7 @@ const timerForm = {
 
 let userSelectedDate;
 timerForm.buttonStart.disabled = true;
-timerForm.buttonStart.addEventListener('click', hundleBtnClick);
+timerForm.buttonStart.addEventListener('click', handleBtnClick);
 let diff;
 
 const options = {
@@ -42,7 +42,7 @@ const options = {
 
 flatpickr(timerForm.inputTimer, options);
 
-function hundleBtnClick() {
+function handleBtnClick() {
   diff = userSelectedDate - Date.now();
   timerForm.buttonStart.disabled = true;
   timerForm.inputTimer.disabled = true;
@@ -53,10 +53,10 @@ function hundleBtnClick() {
       clearInterval(intervalId);
     } else {
       const { days, hours, minutes, seconds } = convertMs(diff);
-      timerForm.spanDays.innerHTML = addLeadingZero(days);
-      timerForm.spanHours.innerHTML = addLeadingZero(hours);
-      timerForm.spanMinutes.innerHTML = addLeadingZero(minutes);
-      timerForm.spanSeconds.innerHTML = addLeadingZero(seconds);
+      timerForm.spanDays.textContent = addLeadingZero(days);
+      timerForm.spanHours.textContent = addLeadingZero(hours);
+      timerForm.spanMinutes.textContent = addLeadingZero(minutes);
+      timerForm.spanSeconds.textContent = addLeadingZero(seconds);
     }
   }, 1000);
 }
